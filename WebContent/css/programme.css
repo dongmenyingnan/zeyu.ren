@@ -1,0 +1,226 @@
+@CHARSET "UTF-8";
+
+/*CSS DOCUMENT*/
+
+
+/*---------------------页面基础定义----------------------------------*/
+
+body {
+    font-size: 12px;
+    color: #333333;
+    margin: 0px;
+    font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    min-width: 686px;
+}
+
+h4 {
+    font-size: 15px;
+}
+.footer {
+	color: #777;
+	padding: 30px 0;
+	border-top: 1px solid #e5e5e5;
+	margin-top: 70px
+}
+
+.footer a {
+	color: #777
+}
+
+.footer-top .about>div {
+	height: 110px;
+	margin-bottom: 10px
+}
+
+.footer-top .about>div h4 {
+	color: #563d7c;
+	font-size: 16px
+}
+
+.footer-bottom {
+	font-size: 13px
+}
+
+.footer-bottom ul>li {
+	padding: 0
+}
+
+.footer-bottom ul>li+li:before {
+	padding: 0 10px;
+	color: #ccc;
+	content: "|"
+}
+
+/*---------------------链接定义----------------------------------*/
+
+a {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #101010;
+    text-decoration: none;
+}
+
+a:active {
+    color: #101010;
+    text-decoration: none;
+}
+
+#detail a {
+    background-color: #606060;
+    color: #fff;
+    text-decoration: none;
+}
+
+#detail a:link,
+#detail a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+#detail a:hover {
+    background-color: #404040;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+#detail a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.black {
+    color: #404040;
+}
+
+.white {
+    color: #fff;
+}
+
+.bgWhite {
+    background-color: #fff;
+}
+
+.bgBlack {
+    background-color: #404040;
+}
+
+.tutorial-all {
+    background: #f2f2f2;
+}
+
+.tutorial-header {
+    background-image: url("../image/community-home.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.tutorial-header h4 {
+    font-family: 'SourceHanSansSC-Light';
+    padding-left: 12%;
+    color: #fff;
+    padding-bottom: 100px;
+}
+
+.tutorial-header h2 {
+    font-family: 'SourceHanSansSC-Light';
+    padding-left: 12%;
+    color: #fff;
+    padding-top: 80px;
+}
+
+.article-style {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.post-img-wrap {
+    float: left;
+    margin-right: 20px;
+}
+
+.listpost-content-wrap {
+    width: 63%;
+    float: left;
+    margin-left: 50px;
+}
+
+
+/*pic*/
+
+.jumbotron {
+    position: relative;
+    padding: 0 !important;
+    margin: 0 0 50px 0;
+    background-color: #f1f1f1;
+    height: 477px;
+}
+
+.jumbotron img {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.jumbotron h1,
+.jumbotron p {
+    position: relative;
+    bottom: 334px;
+    left: 15%;
+    color: #fff;
+}
+
+.current{
+	color: #555;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+/*---------------------页脚样式------------------------*/
+.footer {
+    margin-top: 20px;
+}
+
+.footer iframe {
+    width: 100%;
+    height: 60px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+	background-color: #f1f1f1 !important;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	line-height: 30px !important;
+}
+.que_manager_center{
+	width: 100%;
+	margin:  0 auto;
+	min-height: 300px;
+	
+}
+.upload_que{
+	width: 26%;
+	height: 330px;
+	border: 1px solid  #ddd;
+	margin: 10px 0px 0px 10px;
+	border-radius:2%;
+	float: right;
+	padding: 20px;
+	
+}
+

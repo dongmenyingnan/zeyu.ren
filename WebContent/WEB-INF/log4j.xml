@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="GBK"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c] (%C:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- SQL类日志 -->
+	<!-- <appender name="sql" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="d:/new/logs/logs/testlog4j.sql.log" />
+		<param name="Append" value="true" />
+		name="DatePattern" 配置这条信息是让日志每天自动生成，名字尾部追加日期格式， 第一天生成的日志需第二天才能看到log 
+			可以通过更改系统时间来看日志的输出
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c] (%C:%L) - %m%n" />
+		</layout>
+	</appender> -->
+
+	<!-- 业务类日志 -->
+	<!-- <appender name="business" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="d:/new/logs/testlog4j.business.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c] (%C:%L) - %m%n" />
+		</layout>
+	</appender> -->
+
+	<!-- 不带执行轨迹错误日志 -->
+	<!-- <appender name="simpleError" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="d:/new/logs/testlog4j.error.simple.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c] (%C:%L) - %m%n" />
+		</layout>
+	</appender> -->
+
+	<!-- 带执行轨迹错误日志 -->
+	<!-- <appender name="normalError" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="d:/new/logs//testlog4j.error.normal.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c] (%C:%L) - %m%n" />
+		</layout>
+	</appender> -->
+
+	<logger name="sql" additivity="true">
+		<priority value="info" />
+		<appender-ref ref="sql" />
+	</logger>
+
+	<logger name="business" additivity="true">
+		<priority value="info" />
+		<appender-ref ref="simpleError" />
+	</logger>
+
+	<logger name="simpleError" additivity="true">
+		<priority value="info" />
+		<appender-ref ref="simpleError" />
+	</logger>
+
+	<logger name="normalError" additivity="true">
+		<priority value="info" />
+		<appender-ref ref="normalError" />
+	</logger>
+
+	<root>
+		<appender-ref ref="STDOUT" />
+		<priority value="info" />
+	</root>
+
+</log4j:configuration>  

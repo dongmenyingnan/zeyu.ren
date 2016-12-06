@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+/*CSS DOCUMENT*/
+
+/*---------------------页面基础定义----------------------------------*/
+
+body {
+    font-size: 12px;
+    color: #333333;
+    margin: 0px;
+    font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+    background-color: #f1f1f1;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+
+/*---------------------链接定义----------------------------------*/
+
+a {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #101010;
+    text-decoration: none;
+}
+
+a:active {
+    color: #101010;
+    text-decoration: none;
+}
+
+.black {
+    color: #404040;
+}
+
+.white {
+    color: #fff;
+}
+
+.bgWhite {
+    background-color: #fff;
+}
+
+.bgBlack {
+    background-color: #404040;
+}
+
+.text {
+    display: inline-block;
+    width: 130px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+/*--------------------- botton定义 --------------------*/
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.content-footer {
+    height: 250px;
+    background-image: url("../image/tansuo.jpg");
+    background-repeat: no repeat;
+}
+
+#sidebar {
+    width: 260px;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*---------------------页脚样式------------------------*/
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer iframe {
+    width: 100%;
+    height: 60px;
+}

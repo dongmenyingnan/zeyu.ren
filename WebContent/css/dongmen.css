@@ -1,0 +1,23 @@
+.centershow {
+	text-indent: 2%;
+	font-family: "微软雅黑";
+    margin: 10px 20px 10px 20px;
+	
+}
+.centershow > p {
+	word-break:break-all;
+	font-size: 1.1em;
+	line-height: 2em;
+}
+#answerPart{
+	padding: 20px 0 0 0 !important;
+}
+#qbody{
+	padding: 10px 0 10px 0px !important;
+	background: #fafafa;
+	margin-bottom: 20px;
+}
+#qbody > .mr-10 {
+	
+	margin-left: 20px;
+}

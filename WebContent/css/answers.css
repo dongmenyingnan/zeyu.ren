@@ -1,0 +1,284 @@
+@CHARSET "UTF-8";
+
+/*CSS DOCUMENT*/
+
+
+/*---------------------页面基础定义----------------------------------*/
+
+body {
+    font-size: 14px;
+    color: #000000 !important;
+    padding: 0;
+    margin: 0px;
+    font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    min-width: 1200px;
+}
+
+p {
+    text-align: justify;
+}
+
+
+/*---------------------链接定义----------------------------------*/
+
+a {
+    color: #808080;
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    color: #808080;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:active {
+    color: #808080;
+    text-decoration: none;
+}
+
+.black {
+    color: #404040;
+}
+
+.white {
+    color: #fff;
+}
+
+.bgWhite {
+    background-color: #fff;
+}
+
+.bgBlack {
+    background-color: #404040;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-40 {
+    margin-left: 40px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+
+/*--------------------- botton定义 --------------------*/
+
+.myBtn {
+    display: inline-block;
+    height: 30px;
+    width: 60px;
+    font-size: 14px;
+    padding: 4px 6px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    margin-right: 20px;
+}
+
+#btnFollow {
+    height: 30px;
+    width: 60px;
+    background-color: #404040;
+    color: #fff;
+}
+
+#btnFollow:hover {
+    background-color: #303030;
+}
+
+#btnCollect {
+    height: 30px;
+    width: 60px;
+    background-color: #fff;
+    color: #404040;
+    border-color: #404040;
+}
+
+#btnCollect:hover {
+    background-color: #eee;
+    color: #101010;
+}
+
+
+/*-------------- 页面内容 --------------*/
+
+div#top {
+    background-color: #f1f1f1;
+    height: 90px;
+        padding: 0 15px 0 265px;
+}
+
+div#topleft {
+    display: inline-block;
+    height: 70px;
+    float: left;
+    margin: 0;
+}
+
+div#topleft h3 {
+    font-size: 22px;
+    height: 32px;
+    line-height: 32px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#topleft ul {
+    display: inline-block;
+    height: 24px;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+    position: relative;
+    bottom: 2px;
+}
+
+#topleft ul li {
+    display: inline-block;
+    margin-left: 8px;
+    height: 24px;
+    line-height: 18px;
+    padding: 3px 6px;
+    background-color: #606060;
+    border-radius: 3px;
+}
+
+#topleft ul li:hover {
+    background-color: #404040;
+    transition: all .2S ease-out 0s;
+}
+
+#topleft ul li a {
+    color: #fff;
+}
+
+.i-status-being {
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../image/aio_z_f84033d.png);
+    background-repeat: no-repeat;
+}
+
+.quesIcon {
+    width: 24px;
+    height: 24px;
+    background-position: -407px -1551px;
+    position: relative;
+    bottom: 4.5px;
+}
+
+.answerIcon {
+    width: 18px;
+    height: 21px;
+    background-position: -414px -2642px;
+    position: relative;
+    left: 2px;
+}
+
+div#topright {
+    display: inline-block;
+    float: right;
+    height: 70px;
+    width: auto;
+    margin: 0 40px 0 0;
+}
+
+
+/*center part*/
+
+div#center {
+        padding: 20px 30px 40px 265px;
+    background-color: #fff;
+    height: auto;
+}
+
+#leftpart {
+    width: 800px;
+    display: inline-block;
+}
+
+#qbody {
+    padding: 0 0 20px 40px;
+}
+
+.box {
+    padding: 10px 40px;
+}
+
+img.headicon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+
+/*sidebar*/
+
+#sidebar {
+    display: inline-block;
+    width: 300px;
+    padding: 20px 30px 0 30px;
+    vertical-align: top;
+}
+
+
+/*answerPart*/
+
+#answerPart {
+    padding: 20px 0 0 40px;
+}
+
+textarea {
+    border: solid 1px #808080;
+    border-radius: 3px;
+    width: 720px;
+    padding: 5px 8px;
+}
+
+#answerBtn {
+    font-size: 16px;
+    width: 100px;
+    height: 36px;
+    color: #fff;
+    background-color: #606060;
+    float: right;
+    margin: 6px 40px 0 0;
+}
+
+#answerBtn:hover {
+    background-color: #404040;
+}
+
+
+/*---------------------页脚样式------------------------*/
+
+.footer {
+    padding-top: 20px;
+    margin-top: 0;
+    background-color: #fff;
+    height: 80px;
+}
+
+.footer iframe {
+    width: 100%;
+    height: 60px;
+}

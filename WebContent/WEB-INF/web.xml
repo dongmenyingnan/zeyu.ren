@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <!-- 默认首页定义 -->  
+<welcome-file-list>  
+  <welcome-file>home.action</welcome-file>  
+</welcome-file-list>  
+  <filter>
+    <filter-name>webfilter</filter-name>
+    <filter-class>com.zeyu.filter.WebFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>webfilter</filter-name>
+    <url-pattern>/modules/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/web-config.xml,/WEB-INF/hib-config.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+<!--   <listener>  -->
+<!-- <listener-class> -->
+<!-- 	com.zeyu.server.UdpServer -->
+<!-- </listener-class> -->
+<!-- </listener> -->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <servlet-name>dispatcherServlet</servlet-name>
+</filter-mapping>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>/WEB-INF/log4j.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>com.zeyu.log.Log4jConfigListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+</web-app>

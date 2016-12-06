@@ -1,0 +1,208 @@
+@CHARSET "UTF-8";
+
+/*CSS DOCUMENT*/
+
+
+/*---------------------页面基础定义----------------------------------*/
+
+body {
+    font-size: 12px;
+    color: #333333;
+    margin: 0px;
+    font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+    background-color: #f1f1f1;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+
+/*---------------------链接定义----------------------------------*/
+
+a {
+    color: #eee;
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    color: #eee;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.black {
+    color: #404040;
+}
+
+.white {
+    color: #fff;
+}
+
+.bgWhite {
+    background-color: #fff;
+}
+
+.bgBlack {
+    background-color: #404040;
+}
+
+
+/*------------ 页面内容定义 ------------*/
+
+.ib {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+#bg img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.account-body {
+    background-color: #f3f3f3;
+}
+
+.header-style {
+    text-align: center;
+    position: relative;
+    padding-top: 2%;
+}
+
+.container {
+    margin-top: 0px;
+}
+
+.well-style {
+    background-color: white;
+    width: 100%;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"],
+.form-signin input[type="email"] {
+    position: relative;
+    font-size: 13px;
+    height: 40px!important;
+    height: auto;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 10px!important;
+}
+
+.form-signin input[type="text"]:focus,
+.form-signin input[type="password"]:focus,
+.form-signin input[type="email"]:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+.list-inline a {
+    font-size: 13px;
+}
+
+.list-inline a:hover {
+    text-decoration: none;
+}
+
+.btn-lg {
+    margin: 0px!important;
+}
+
+.form-signin p {
+    /*background-color:#000;*/
+    font-size: 16px !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: white;
+    padding: 8px 0px 8px 0px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+#login {
+    margin-top: 30px;
+}
+
+#forgot {
+    margin-top: 50px;
+}
+
+#signup {
+    margin-top: 30px;
+}
+
+#logoimg {
+    width: 315px;
+    height: 51px;
+    padding-left: 33px;
+}
+
+
+/*---------------------页脚样式------------------------*/
+
+.footer iframe {
+    position: absolute;
+    margin-top: 40px;
+    width: 100%;
+    height: 60px;
+}

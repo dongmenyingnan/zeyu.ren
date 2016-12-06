@@ -1,0 +1,373 @@
+@CHARSET "UTF-8";
+/*CSS DOCUMENT*/
+
+/*---------------------页面基础定义----------------------------------*/
+
+body {
+    font-size: 12px;
+    color: #333333;
+    margin: 0px;
+    font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+    background-color: #f1f1f1;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+p {
+    text-align: justify;
+}
+
+/*---------------------链接定义----------------------------------*/
+
+a {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+/*     color: #404040; */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #101010;
+    text-decoration: none;
+}
+
+a:active {
+    color: #101010;
+    text-decoration: none;
+}
+
+.black {
+    color: #404040;
+}
+
+.white {
+    color: #fff;
+}
+
+.bgWhite {
+    background-color: #fff;
+}
+
+.bgBlack {
+    background-color: #404040;
+}
+
+
+/*--------------------- text定义 --------------------*/
+
+.text {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+/*--------------------- botton定义 --------------------*/
+
+.btn {
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+/*     border: 1px solid #204d74; */
+    border-radius: 4px;
+}
+
+
+/*------------ 页面内容定义 ------------*/
+
+.ib {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.container-fluid-margin {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.btn-search {
+    border-radius: 0px 4px 4px 0px;
+}
+
+.btn-search:hover>span {
+    color: black;
+}
+
+.navbar-form-search {
+    margin: 10px 0 0 0;
+    width: 250px;
+}
+
+.navbar-input-search {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.input-search {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.navbar-brand-style {
+    float: none;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+.model-body-footer {
+    font-size: 3px;
+    margin-top: 8px;
+}
+
+
+/*navTabs*/
+
+ul#navTabs {
+    list-style: none;
+    padding: 0;
+    display: block;
+}
+
+ul#navTabs li {
+    display: inline-block;
+    line-height: 40px;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    color: black;
+}
+
+ul#navTabs li.active {
+    border-bottom: solid 3px #101010;
+}
+
+ul#navTabs li.active:hover {
+    border-bottom: solid 3px #101010;
+}
+
+ul#navTabs li:hover {
+    border-bottom: solid 3px #606060;
+}
+
+
+/*search part*/
+
+input#srhText {
+    display: inline-block;
+    width: 300px;
+    margin-right: 5px;
+}
+
+button#srhBtn {
+    float: left;
+    height: 34px;
+    position: relative;
+    bottom: 2px;
+    display: inline-block;
+    border: solid 1px #808080;
+}
+
+button#srhBtn:hover {
+    background-color: #fff;
+    border: solid 1px #404040;
+}
+
+
+/*problem part*/
+
+.problem .box {
+    height: 76px;
+    padding: 15px 15px;
+}
+
+.problem .box:hover {
+    background-color: #eee;
+}
+
+.problem #label {
+    width: 48px;
+    height: 46px;
+    margin-right: 8px;
+    text-align: center;
+    padding: 3px;
+    border: solid 1px #404040;
+}
+
+.problem #label span {
+    width: 42px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.box #title {
+    margin-left: 10px;
+    height: 46px;
+}
+
+.box #title a {
+    height: 30px;
+}
+
+.box #title span {
+    height: 20px;
+}
+
+.box h4 {
+    display: inline-block;
+    line-height: 20px;
+    height: 20px;
+    margin-top: 3px;
+}
+
+#title ul {
+    display: inline-block;
+    height: 30px;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+#title ul li {
+    display: inline-block;
+    margin-left: 8px;
+    height: 26px;
+    line-height: 20px;
+    padding: 3px 8px;
+    background-color: #606060;
+    border-radius: 3px;
+}
+
+#title ul li:hover {
+    background-color: #404040;
+    transition: all .2S ease-out 0s;
+}
+
+#title ul li a {
+    color: #fff;
+}
+
+
+/*分页*/
+
+div.fy {
+    float: right;
+    padding-top: 15px;
+    padding-right: 20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.fy span,
+.fy a {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    margin: 0 2px;
+    background-color: #fff;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+.fy a:hover {
+    border: 1px solid #404040;
+}
+
+.fy .active {
+    background-color: #404040;
+    color: #fff;
+    border: 1px solid #404040;
+}
+
+
+/*---------------------页脚样式------------------------*/
+.footer iframe {
+    width: 100%;
+    height: 60px;
+}
+
+.footer {
+	color: #777;
+	padding: 30px 0;
+	border-top: 1px solid #e5e5e5;
+	margin-top: 70px
+}
+
+.footer a {
+	color: #777
+}
+
+.footer-top .about>div {
+	height: 110px;
+	margin-bottom: 10px
+}
+
+.footer-top .about>div h4 {
+	color: #563d7c;
+	font-size: 16px
+}
+
+.footer-bottom {
+	font-size: 13px
+}
+
+.footer-bottom ul>li {
+	padding: 0
+}
+
+.footer-bottom ul>li+li:before {
+	padding: 0 10px;
+	color: #ccc;
+	content: "|"
+}

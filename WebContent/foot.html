@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>页脚</title>
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            padding: 0;
+            font-family: "微软雅黑", "黑体", Arial, Verdana, sans-serif;
+            font-size: 13px;
+            color: #5a5a5a;
+        }
+        
+        a {
+            color: #606060;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #101010;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 0px;
+        }
+        
+        .contact a {
+            position: relative;
+            top: 15px;
+            font-size: 14px;
+            line-height: 32px;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+        
+        .ib {
+            display: inline-block;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        #dpt {
+            height: 20px;
+            width: 1px;
+            border-left: dashed 1px #aaa;
+            margin: 0px 5px;
+            position: relative;
+            top: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container container-center">
+        <div>
+            <a target="_parent" href="aboutus.jsp" class="ib">关于我们</a>
+            <!-- 分割线 -->
+            <div id="dpt" class="ib"></div>
+            <a target="_parent" href="duty.jsp" class="ib">服务条款</a>
+            <!-- 分割线 -->
+            <div id="dpt" class="ib"></div>
+            <a target="_parent" href="feedback.jsp" class="ib">建议反馈</a>
+        </div>
+        <div class="copyright">
+            <p class="text-muted">
+                Copyright © 2011-2016 Exception. 当前呈现版本 0.0.1
+                <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow">
+                    京 ICP 证	09002ad3 号
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
