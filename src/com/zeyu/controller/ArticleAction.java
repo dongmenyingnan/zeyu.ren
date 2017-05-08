@@ -47,6 +47,10 @@ public class ArticleAction extends BaseAction {
 		// 默认显示最新的文章列表
 //		List<Article> articlesNew = articleService.getAllArticles(1);
 //		model.addAttribute("articlesNew", articlesNew);
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 
 		RequestFlag requestFlag = new RequestFlag();
 		if (flag == null || flag == 1) {
@@ -77,11 +81,16 @@ public class ArticleAction extends BaseAction {
 		model.addAttribute("PagesNew", pages);
 
 		return "article";
+		}
 
 	}
 
 	@RequestMapping(value = "/showArticlesByUserKind.action")
-	public String showArticlesByUserKind(Model model, Integer flag, Integer page) {
+	public String showArticlesByUserKind(Model model, Integer flag, Integer page,HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		List<Article> lists = articleService.showArticlesByUserKind(1);
 		model.addAttribute("articlesGrade", lists);
 
@@ -106,6 +115,7 @@ public class ArticleAction extends BaseAction {
 		System.out.println(pages.toString() + "+++" + pages.size());
 		model.addAttribute("PagesNew", pages);
 		return "article";
+		}
 	}
 
 	@RequestMapping(value = "/searchArticles.action")

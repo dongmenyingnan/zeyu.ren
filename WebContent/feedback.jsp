@@ -50,6 +50,11 @@
 <link href="css/carousel.css" rel="stylesheet">
 <script src="js/zeyu.js"></script>
 <script src="./bootstrap/js/mybootstrap.js"></script>
+<style type="text/css">
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+padding-left: 0px !important;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -86,7 +91,7 @@
 						</form>
 						<!-- 导航 -->
 						<div class="collapse navbar-collapse" id="lg-navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
+						<ul class="nav navbar-nav navbar-left">
 								<li><c:choose>
 										<c:when test="${user!=null}">
 											<a href="javascript:openModel();">
@@ -95,13 +100,34 @@
 											<a
 												href="${pageContext.request.contextPath }/user/account.jsp">
 										</c:otherwise>
-									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提问</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/feedback.jsp"><span
 										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
+										
 							</ul>
-							<ul class="nav navbar-nav navbar-right">
+						
+						
+													<ul class="nav navbar-nav navbar-right">
 
 								<c:choose>
 									<c:when test="${user!=null}">
@@ -185,9 +211,9 @@
 		</div>
 		<!-- 页面 -->
 		<!-- Nav tabs -->
-		<header class="profile__heading" style="padding-bottom: 3%;">
+<!-- 		<header class="profile__heading" style="padding-bottom: 3%;">
 			<div class="container"></div>
-		</header>
+		</header> -->
 		<!-- 页面 -->
 
 	<div class="container">

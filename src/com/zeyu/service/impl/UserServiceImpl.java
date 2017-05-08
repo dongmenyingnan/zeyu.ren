@@ -104,4 +104,16 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public User admincheck(String name, String password) {
+		String a = "0";
+		return userDao.findByProperty("user_kind="+a+"and user_name="+name+"and user_pass="+password).get(0);
+	}
+
+	@Override
+	public User findByUserToken(String user_token) {
+		
+		return userDao.findByProperty("user_token='"+user_token+"'").get(0);
+	}
+
 }

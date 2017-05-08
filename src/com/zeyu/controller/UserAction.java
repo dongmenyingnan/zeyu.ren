@@ -1,18 +1,23 @@
 package com.zeyu.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zeyu.entity.Article;
 import com.zeyu.entity.Collection;
@@ -56,6 +61,7 @@ public class UserAction extends BaseAction {
 	}
 	
 	// 注册
+	//没有用户名唯一性的判断
 	@RequestMapping(value = "/register.action", method = RequestMethod.POST)
 	public String register(Model model, String user_id, String user_name, String user_email, String user_pass,
 			String user_pass_con) {
@@ -88,18 +94,19 @@ public class UserAction extends BaseAction {
 	}
 
 	// 登录
-	@RequestMapping(value = "/login.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.action")
+//	, method = RequestMethod.POST
 	public String login(HttpSession session, Model model, String user_name, String user_pass) {
 		User userLogin = new User();
 		userLogin.setUser_name(user_name);
 		userLogin.setUser_pass(user_pass);
-
+		
 		User user = userService.judge(userLogin);
 		if (user != null) {
 			System.out.println("登录成功");
 			session.setAttribute("user", user);
 			if (user.getUser_kind() == 0)
-				return "redirect:../CMS/admin-list.html";
+				return "redirect:../CMS/index.html";
 			else
 				return "redirect:/home.action";
 
@@ -110,19 +117,38 @@ public class UserAction extends BaseAction {
 		}
 
 	}
+	@RequestMapping(value="/admincheck.action",method=RequestMethod.POST)
+	public void admincheck(HttpServletRequest request,HttpServletResponse response,HttpSession session){
+		User user = (User)session.getAttribute("user");
+		try {
+			if(user==null){
+				response.getWriter().print("null");	
+			}else if(String.valueOf(user.getUser_id()).equals("18")){
+				response.getWriter().print("1");	
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	// 忘记密码 发送邮件 找回密码
+	//重置有问题
 	@RequestMapping(value = "/fogertPass.action", method = RequestMethod.POST)
-	public String forgetPass(Model model, String user_email,HttpSession session) {
-		
+	public void forgetPass(Model model,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException {
+		String user_email= request.getParameter("email");
 		User user=userService.findByEmail(user_email);
+		String user_token = getRandomString(20);
+		user.setUser_token(user_token);
+		user.setUser_token_status("0");
+		userService.update(user);
+		
 		if(user==null){
 			
 		}else{
 			
 		session.setAttribute("user", user);
-		
-		String resetPassUrl = "http://localhost:8080/zeyu.ren/user/resetPass.jsp";
+		String resetPassUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/user/resetPassView.action?token="+user_token;
 		String smtp = "smtp.126.com";
 		String from = "just_domyself@126.com";
 		String to = user_email;
@@ -132,18 +158,46 @@ public class UserAction extends BaseAction {
 
 		String username = "just_domyself";
 		String password = "LS_insiston_LS";
-		MyMail.send(smtp, from, to, subject, content, username, password);
-	
+		boolean flag= MyMail.send(smtp, from, to, subject, content, username, password);
+		if(flag==true){
+			response.getWriter().print("1");	
+		}else{
+			response.getWriter().print("0");
+			}
 		}
-		return "account";
+	}
+	@RequestMapping(value="/resetPassView.action",method = RequestMethod.GET)
+	public String resetPassView(String token,Model model){
+		User user= userService.findByUserToken(token);
+		String stutas= user.getUser_token_status();
+		if(stutas.equals("0")){
+			user.setUser_token_status("1");
+			userService.update(user);
+			model.addAttribute("user_id", user.getUser_name());
+			return "resetPass";
+		}else {
+			return "invalid";
+		}
+		
 		
 	}
 
+	//重置密码用户token生成
+	public static String getRandomString(int length) { //length表示生成字符串的长度
+	    String base = "abcdefghijklmnopqrstuvwxyz0123456789";   
+	    Random random = new Random();   
+	    StringBuffer sb = new StringBuffer();   
+	    for (int i = 0; i < length; i++) {   
+	        int number = random.nextInt(base.length());   
+	        sb.append(base.charAt(number));   
+	    }   
+	    return sb.toString();   
+	 }  
+	
 	// 忘记密码 根据邮件内容更新密码
 	@RequestMapping(value = "/resetPass.action", method = RequestMethod.POST)
-	public String resetPass(HttpSession session, Model model, String user_pass, String user_pass_con) {
-		User user = (User)session.getAttribute("user");
-		
+	public String resetPass(HttpSession session, Model model, String user_pass, String user_pass_con,String user_id) {
+		User user= userService.findByUser(user_id).get(0);
 		if (user != null)
 			System.out.println(user.toString());
 
@@ -325,6 +379,9 @@ public class UserAction extends BaseAction {
 	@RequestMapping(value = "/showMyCollection.action", method = RequestMethod.GET)
 	public String showMyCollection(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		List<Collection> collections = collectionService.getMyCollection(user.getUser_id(), 1);
 		
 		List<Attention> attentions = new ArrayList<Attention>();
@@ -346,12 +403,16 @@ public class UserAction extends BaseAction {
 		
 		model.addAttribute("attentions", attentions);
 		return "favorites";
+		}
 	}
 
 	// 查看我的关注
 	@RequestMapping(value = "/showMyAttention.action", method = RequestMethod.GET)
 	public String showMyAttention(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		List<Collection> collections = collectionService.getMyCollection(user.getUser_id(), 2);
 		
 		List<Attention> attentions = new ArrayList<Attention>();
@@ -382,6 +443,7 @@ public class UserAction extends BaseAction {
 		model.addAttribute("attentions", attentions);
 	
 		return "following";
+		}
 	}
 
 	// 用户反馈

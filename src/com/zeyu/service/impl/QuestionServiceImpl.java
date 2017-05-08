@@ -278,6 +278,17 @@ public class QuestionServiceImpl implements QuestionService {
 		}
 	
 	}
+	@Override
+	public boolean delete(String id) {
+		
+		try {
+			questionDao.deleteByIds("data.question_id=" + id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 
 

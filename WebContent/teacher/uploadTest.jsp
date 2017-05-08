@@ -13,8 +13,11 @@
 <title>zeyu.ren</title>
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../bootstrap/css/sticky-footer.css" rel="stylesheet">
-<link href="../css/banneralert.css" rel="stylesheet">
 <link href="../css/programme.css" rel="stylesheet">
+<link rel="stylesheet" href="../notify/demo/demo.css"/>
+	<link rel="stylesheet" type="text/css" href="../notify/css/default.css">
+	<link rel="stylesheet" href="../notify/dist/css/Lobibox.min.css"/>
+
 <link rel="icon" href="../image/favicon.png">
 <link href="../css/carousel.css" rel="stylesheet">
 
@@ -50,8 +53,10 @@
 <link rel="icon" href="image/favicon.png">
 <link href="../css/carousel.css" rel="stylesheet">
 <script src="../js/zeyu.js"></script>
-<script src="../js/banneralert.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="../notify/dist/js/Lobibox.min.js"></script>
+    <script src="../notify/demo/demo.js"></script>
+
 </head>
 <body>
 	<header>
@@ -504,13 +509,35 @@
     <p class="help-block">Example block-level help text here.</p>
   </div>
 
-  <button type="button" class="btn btn-default" id="examUpload" onclick="ajaxFileUpload()">上传</button>
+  <button type="button" class="btn btn-default" id="popupProgressBasic" >上传</button>
 </form>	
 
 	</div>
 	</div>
 	<script>
-
+	 $('#popupProgressBasic').click(function () {
+         var inter;
+         Lobibox.progress({
+             title: 'Please wait',
+             label: 'Uploading files...',
+             onShow: function ($this) {
+                 var i = 0;
+                 inter = setInterval(function () {
+                     if (i > 100) {
+                         inter = clearInterval(inter);
+                 		   ajaxFileUpload();
+                     }
+                     i = i + 0.1;
+                     $this.setProgress(i);
+                 }, 0.1);
+             },
+             closed: function () {
+                 inter = clearInterval(inter);
+             }
+         });
+     });
+	
+	
 	//异步上传
 	function ajaxFileUpload(){
 		var val_scrope = $('input[name="optionsRadiosinline"]:checked ').val();
@@ -524,7 +551,7 @@
 			alert("请选择上传的文件");
 		}else{
 		
-	$.ajaxFileUpload({
+        var  xhr 	= $.ajaxFileUpload({
 		//处理文件上传操作的服务器端地址
 		url: "../teacher/upload.action",
 		secureuri:false,                       //是否启用安全提交,默认为false 
@@ -535,7 +562,8 @@
 		fileElementId:'exampleInputFile',           //文件选择框的id属性
 		dataType:'text',                       //服务器返回的格式,可以是json或xml等
 		success:function(data, status){ //服务器响应成功时的处理函数
-			ajaxTabCantent(val_scrope);
+			
+					ajaxTabCantent(val_scrope);
 			setTimeout(
 					function(){
 						if(val_scrope==0){
@@ -551,19 +579,8 @@
 							$("#nav-tabs").children().eq(1).attr("class","");
 							$("#nav-tabs").children().eq(0).attr("class","");	
 						}
-						$("body").showbanner({
-
-							title : "jq22.com",
-
-							icon : "images/icon.png",
-
-							content : "底部横幅演示",
-
-							position : "bottom"
-
-						});
 						
-					},300)
+					},100)
 	
 			
 				
@@ -573,6 +590,7 @@
 	
 		}
 	});
+        
 		}
 	}
 	$(".btn-danger").click(function(){
@@ -588,6 +606,7 @@
 			},
 			success:function(){
 				ajaxTabCantent(scope);
+				
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 	             alert(XMLHttpRequest.status);

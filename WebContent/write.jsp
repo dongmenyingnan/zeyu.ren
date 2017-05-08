@@ -52,6 +52,100 @@
 <script src="./bootstrap/js/mybootstrap.js"></script>
 </head>
 <body>
+<div class="navbar-wrapper">
+
+			<div class="container">
+
+				<nav class="navbar navbar-inverse navbar-static-top">
+					<div class="container">
+						<div class="navbar-header navbar-header-style">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse" data-target="#lg-navbar-collapse"
+								aria-expanded="false">
+								<span class="sr-only">Exception</span> <span class="icon-bar"></span>
+								<span class="icon-bar"></span> <span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand navbar-brand-style" style="color: white;"
+								href="home.action">Exception</a>
+						</div>
+
+						<form class="navbar-form navbar-left navbar-form-search hidden-xs"
+							role="search"
+							action="${pageContext.request.contextPath}/search.action"
+							method="get">
+							<div class="input-group">
+								<input type="hidden" name="flag" value="1" /> <input
+									type="hidden" name="page" value="1" /> <input type="text"
+									class="form-control " name="searchContent" id="search"
+									placeholder="搜索异常或错误..."> <span class="input-group-btn">
+									<button class="btn btn-default btn-search" type="submit">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+								</span>
+
+							</div>
+						</form>
+						<!-- 导航 -->
+						<div class="collapse navbar-collapse" id="lg-navbar-collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="javascript:openModel();">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/feedback.jsp"><span
+										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
+										
+							</ul>
+							
+							
+							<ul class="nav navbar-nav navbar-right">
+
+								<c:choose>
+									<c:when test="${user!=null}">
+										<li><a href="user/settings_check.action" style="color: white;"><span
+												class="glyphicon glyphicon-user" style="color: white;"
+												aria-hidden="true"></span> ${user.user_name } </a></li>
+
+									</c:when>
+									<c:otherwise>
+										<li><a href="user/account.jsp" style="color: white;"><span
+												class="glyphicon glyphicon-user" style="color: white;"
+												aria-hidden="true"></span> 登录 </a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+			</div>
+		</div>
+
 	<header>
 
 		<!-- 页面 -->
@@ -60,7 +154,8 @@
 			<div class="container"></div>
 		</header>
 
-		<div>
+		<div style="    width: 90%;
+    margin: 45px auto;">
 			<form action="${pageContext.request.contextPath}/user/write.action"
 				method="post">
 				<div class="modal-header">
@@ -166,18 +261,18 @@
 			source : availableTags
 		});
 	}
-/* 	$(function() {
+ 	$(function() {
 		$('#tags_1').tagsInput({
 			width : 'auto'
 		});
-		aoTuList("a");
+	/* 	aoTuList("a");
 	
 			
 			var str = $("#search").value;
 			if (!$.trim(str).length <= 0)
-				aoTuList(str);
+				aoTuList(str); */
 		
-	}); */
+	}); 
 	function LimitTextArea(field, maxLen) {
 		maxlimit = maxLen;
 		if (field.value.length > maxlimit)

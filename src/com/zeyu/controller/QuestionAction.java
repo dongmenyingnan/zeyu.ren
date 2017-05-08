@@ -24,6 +24,9 @@ public class QuestionAction {
 	public String ask(Model model, String comment,String label, String commentAddition, Integer anonymous, HttpSession session) {
 		
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		Integer user_id = user.getUser_id();
 		Question question = new Question();
 		Date create_time = new Date();
@@ -41,5 +44,6 @@ public class QuestionAction {
 		question.setCreate_time(create_time);
 		questionService.ask(question);
 		return "redirect:/home.action";
+		}
 	}
 }

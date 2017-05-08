@@ -796,6 +796,7 @@ $(".btn-danger").click(function(){
 		},
 		success:function(){
 			ajaxTabCantent(scope);
+			
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
              alert(XMLHttpRequest.status);

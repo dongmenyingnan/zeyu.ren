@@ -256,6 +256,110 @@ public class BaseDaoImpl<T> implements IBaseDao<T>, IBaseHibernateDAO {
 		return temp;
 	}
 
+	@Override
+	public List<T> findByIntSearch(int flag,int page) {
+		List<T> list = new ArrayList<>();
+		try {
+			if(flag==0){
+				Query query = getSession().createQuery("from " + cls.getName());
+				list = query.list();
+			}else {
+				
+			
+			list.clear();
+			Query query = getSession().createQuery("from " + cls.getName()+" where manual_type=" + flag);
+			if (page == -1) {
+
+			} else {
+				query.setFirstResult((page - 1) * 5);
+				query.setMaxResults(5);
+			}
+			list = query.list();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<T> findByIntSearchExcep(int flag,int page) {
+		List<T> list = new ArrayList<>();
+		try {
+			if(flag==0){
+				Query query = getSession().createQuery("from " + cls.getName());
+				list = query.list();
+			}else {
+				
+			
+			list.clear();
+			Query query = getSession().createQuery("from " + cls.getName()+" where exception_type=" + flag);
+			if (page == -1) {
+
+			} else {
+				query.setFirstResult((page - 1) * 5);
+				query.setMaxResults(5);
+			}
+			list = query.list();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	
+	public T findByIntSearch1(int flag) {
+		List<T> list = null;
+		try {
+			String sql="from " + cls.getName()+
+					"where manualartcle_id="+flag;
+			Query query = getSession().createQuery("from " + cls.getName() + " where manualartcle_id=" + flag);
+			list = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list.get(0);
+}
+	public T findByIntSearch2(int flag) {
+		List<T> list = null;
+		try {
+			String sql="from " + cls.getName()+
+					"where uuid="+flag;
+			Query query = getSession().createQuery("from " + cls.getName() + " where uuid=" + flag);
+			list = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list.get(0);
+}
+
+	@Override
+	public List<T> findByIntSearchException(int flag) {
+			List<T> list = null;
+			try {
+				String sql="from " + cls.getName()+
+						"where exception_type="+flag;
+				Query query = getSession().createQuery("from " + cls.getName() + " where exception_type=" + flag);
+				list = query.list();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+	}
+	public T findByIntSearch1Exception(int flag) {
+		List<T> list = null;
+		try {
+			String sql="from " + cls.getName()+
+					"where exceptionarticle_id="+flag;
+			Query query = getSession().createQuery("from " + cls.getName() + " where exceptionarticle_id=" + flag);
+			list = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list.get(0);
+}
+
 
 
 }

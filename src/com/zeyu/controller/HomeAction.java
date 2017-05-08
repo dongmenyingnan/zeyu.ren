@@ -36,7 +36,10 @@ public class HomeAction extends BaseAction {
 	@RequestMapping(value = "search.action", method = RequestMethod.GET)
 	public String search(HttpSession session, Model model, Integer page, String searchContent, Integer flag)
 			throws UnsupportedEncodingException {
-	
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		RequestFlag requestFlag = new RequestFlag();
 		String gb = new String(searchContent.getBytes("ISO-8859-1"), "UTF-8");
 		model.addAttribute("searchContent", gb);
@@ -85,6 +88,7 @@ public class HomeAction extends BaseAction {
 		}
 
 		return "index";
+		}
 
 		// 分页核心代码
 		/*
@@ -99,8 +103,13 @@ public class HomeAction extends BaseAction {
 	// 首页默认显示的方法 数据默认显示到最新列表
 	@RequestMapping(value = "/home.action")
 	public String homeNewQuestions(HttpSession session, Model model, Integer page, Integer flag) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		RequestFlag requestFlag = new RequestFlag();
 		model.addAttribute("searchContent", null);
+		System.out.println(page+"     "+flag);
 		if (flag == null || flag == 1) {
 			requestFlag.setMostNew("");
 			requestFlag.setMostHot("class=\"active\"");
@@ -126,7 +135,6 @@ public class HomeAction extends BaseAction {
 			
 			questionVo = questionService.getQuestionByPage(2, page); 
 			
-			System.out.println(questionVo.toString());
 			
 			model.addAttribute("questions", questionVo);
 
@@ -136,12 +144,16 @@ public class HomeAction extends BaseAction {
 			e.printStackTrace();
 		}
 
-		return "index";
+		return "index";}
 	}
 
 	// 首页最热 问题列表 显示
 	@RequestMapping(value = "/homeHotQuestions.action")
 	public String homeHotQuestions(HttpSession session, Model model, Integer page, Integer flag) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		RequestFlag requestFlag = new RequestFlag();
 		if (page == null)
 			page = 1;
@@ -176,15 +188,20 @@ public class HomeAction extends BaseAction {
 		}
 
 		return "index";
+		}
 	}
 
 	// 首页我的 提问 问题列表 显示（用户登录后显示）
 	@RequestMapping(value = "/homeMyQuestions.action")
 	public String homeMyQuestions(HttpSession session, Model model, Integer page) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
+		
 		RequestFlag requestFlag = new RequestFlag();
 		model.addAttribute("searchContent", null);
 
-		User user = (User) session.getAttribute("user");
 
 		requestFlag.setMostNew("");
 		requestFlag.setMostHot("");
@@ -228,17 +245,21 @@ public class HomeAction extends BaseAction {
 		}
 
 		return "index";
+		}
 	}
 
 	// 首页我的 回答 问题列表 显示（用户登录后显示）
 	@RequestMapping(value = "/homeMyAnsQuestions.action")
 	public String homeMyAnsQuestions(HttpSession session, Model model, Integer page) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		if (page == null)
 			page = 1;
 		RequestFlag requestFlag = new RequestFlag();
 		model.addAttribute("searchContent", null);
 
-		User user = (User) session.getAttribute("user");
 
 		requestFlag.setMostNew("");
 		requestFlag.setMostHot("");
@@ -248,7 +269,6 @@ public class HomeAction extends BaseAction {
 		requestFlag.setActiveNew("");
 		requestFlag.setActiveMyAnswer("active");
 		requestFlag.setActiveMyQuestion("");
-
 		model.addAttribute("requestFlag", requestFlag);
 
 		if (user != null) {
@@ -276,6 +296,7 @@ public class HomeAction extends BaseAction {
 		}
 
 		return "index";
+		}
 	}
 
 	public List<Page> getPages(int page, int maxPage, int flag) {

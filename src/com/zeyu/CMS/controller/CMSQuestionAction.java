@@ -30,6 +30,11 @@ public class CMSQuestionAction extends BaseAction{
 		String result = JSON.toJSONString(questionService.getAllQuestion());
 		out(response, result);
 	}
+	@RequestMapping(value = "/questionDeleteRole.action", method = RequestMethod.POST)
+	public void adminDeleteRole(HttpServletResponse response, String id) {
+		String result = questionService.delete(id) + "";
+		out(response, result);
+	}
 	@RequestMapping(value = "/answersOfQuestion.action", method = RequestMethod.GET)
 	public void answersOfQuestion(String json, HttpServletResponse response,String questionId) {
 		String result = JSON.toJSONString(answerService.getAnswerVo(Integer.parseInt(questionId)));

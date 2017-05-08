@@ -29,7 +29,27 @@ public class User implements Serializable {
 	private String user_intro;
 	private Integer user_kind;
 	private String user_type;
+	private String user_token;
+	private String user_token_status;
 	
+	@Column(name = "user_token_status", unique = true, nullable = true)
+	public String getUser_token_status() {
+		return user_token_status;
+	}
+
+	public void setUser_token_status(String user_token_status) {
+		this.user_token_status = user_token_status;
+	}
+
+	@Column(name = "user_token", unique = true, nullable = true)
+	public String getUser_token() {
+		return user_token;
+	}
+
+	public void setUser_token(String user_token) {
+		this.user_token = user_token;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id", unique = true, nullable = true)
@@ -160,7 +180,14 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "user_id"+user_id+"user_name+"+user_name+"user_email+"+user_email;
+		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_tele=" + user_tele + ", user_email="
+				+ user_email + ", user_pass=" + user_pass + ", user_sex=" + user_sex + ", user_per_web=" + user_per_web
+				+ ", user_cha_web=" + user_cha_web + ", user_birth=" + user_birth + ", user_city=" + user_city
+				+ ", user_address=" + user_address + ", user_intro=" + user_intro + ", user_kind=" + user_kind
+				+ ", user_type=" + user_type + ", user_token=" + user_token + ", user_token_status=" + user_token_status
+				+ "]";
 	}
+
+	
 	
 }

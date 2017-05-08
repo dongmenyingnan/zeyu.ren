@@ -31,13 +31,11 @@
 				<form
 					action="${pageContext.request.contextPath}/user/resetPass.action"
 					method="post" class="form-signin">
-						<input type="text" placeholder="重置的账号" name="user_name"
-						class="form-control">
 					<input type="password" placeholder="请输入密码" name="user_pass"
 						class="form-control">
 						<input type="password" placeholder="请输入确认密码" name="user_pass_con"
 						class="form-control">
-						 
+						 <input type="hidden" value="${user_id }" name="user_id" >
 					<button class="btn text-muted text-center btn-primary"
 						type="submit">点击重置密码</button>
 				</form>

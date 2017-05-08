@@ -21,6 +21,8 @@ import com.zeyu.service.AnswerService;
 
 @Service("answerService")
 public class AnswerServiceImpl implements AnswerService {
+	
+	
 	@Resource
 	AnswerDao answerDao;
 	@Resource
@@ -45,8 +47,10 @@ public class AnswerServiceImpl implements AnswerService {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (int i = 0; i < answers.size(); i++) {
 			Date create_date = new Date();
+			String create_date1 = null;
 			try {
 				create_date = format.parse(answers.get(i).getCreate_time() + "");
+				create_date1 = format.format(create_date);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -56,7 +60,7 @@ public class AnswerServiceImpl implements AnswerService {
 				answerGather.setUsername(user.getUser_name());
 				answerGather.setUsertype(user.getUser_type());
 				answerGather.setAnswer(answers.get(i));
-				answerGather.setAnswer_time(create_date);
+				answerGather.setAnswer_time(create_date1);
 				answerGathers.add(answerGather);
 			}
 		}

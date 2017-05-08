@@ -62,13 +62,13 @@ margin-left: 100px;
 				</div>
 			</div>
 			<div id="forgot" class="tab-pane">
-				<form
-					action="${pageContext.request.contextPath}/user/fogertPass.action"
-					method="post" class="form-signin">
-					<input type="email" required="required" name="user_email"
+		 <form
+					action=""
+					method="post" class="form-signin"> 
+					<input id="email" type="email" required="required" name="user_email"
 						placeholder="请输入您注册时使用的邮箱..." class="form-control"> <br>
-					<button class="btn text-muted text-center btn-danger" type="submit">重置密码</button>
-				</form>
+					<button onclick="sandcheck()"  class="btn text-muted text-center btn-danger" type="button">重置密码</button>
+				</form> 
 			</div>
 			<div id="signup" class="tab-pane">
 				<form
@@ -89,10 +89,11 @@ margin-left: 100px;
 			<ul class="list-inline">
 				<li class="active"><a class="text-muted" href="#login"
 					data-toggle="tab">登录</a></li>
-				<li class=""><a class="text-muted" href="#forgot"
+			 	<li class=""><a class="text-muted" href="#forgot"
 					data-toggle="tab">忘记密码</a></li>
-				<li class=""><a class="text-muted" href="#signup"
-					data-toggle="tab">注册</a></li>
+				
+			<!--	<li class=""><a class="text-muted" href="#signup"
+					data-toggle="tab">注册</a></li> -->
 			</ul>
 		</div>
 	</div>
@@ -129,7 +130,28 @@ margin-left: 100px;
 			}
 			return pwd;
 		}
-
+		function sandcheck(){
+			var email = $("#email").val();
+			$.ajax({
+				url:"../user/fogertPass.action",
+				type:"post",
+				data:{
+					email:email
+				},
+				dataType : "text",
+				async : false,
+				success:function(msg){
+					if(msg.indexOf("1")>=0){
+					alert("发送成功! 请查看邮箱！");
+					location.href="../user/account.jsp";
+				}else{
+					alert("发送失败!请稍后再试！");
+					}
+				}
+				
+			})
+			
+		}
 		function trim(str) {
 			var strnew = str.replace(/^\s*|\s*$/g, "");
 			return strnew;

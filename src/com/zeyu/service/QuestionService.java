@@ -34,6 +34,7 @@ public interface QuestionService {
 	public List<String> getAuToList(String str);
 	
 	public boolean hitsCheck(int question_id,Integer user_id);
+	public boolean delete(String user_id);
 	
 
 }

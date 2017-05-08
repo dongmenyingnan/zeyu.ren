@@ -1,0 +1,152 @@
+*{
+		list-style: none;
+	text-decoration: none;
+	
+}
+
+.center{
+	min-height: 500px;
+	width:100%;
+}
+.navbar-wrapper{
+	position: static !important;
+	
+}
+.title {
+	margin-bottom: 30px;
+}
+.title > h3{
+	text-align: left;
+	margin: 10px;
+}
+.containers_left{
+	float: left;
+	height:400px;
+	width: 20%;
+}
+.ct_right{
+	position:relative;
+	float: left;
+	height: 400px;
+	width: 70%;
+}
+
+.containers_right7,.containers_right2,.containers_right3,.containers_right4,.containers_right5,.containers_right6{
+	padding:40px;
+	position:absolute;
+	height: 400px;
+	display:none;
+	width: 100%;
+	border-top:1px solid rgba(193,195,197,.8);
+	border-bottom:1px solid rgba(193,195,197,.8);
+	border-right:1px solid rgba(193,195,197,.8);
+	background-image: url("../image/manual/backBg.png");
+	background-size:100% 100%;
+}
+.ct_right .active{
+	display: block !important;
+}
+/* .containers_right7 active,.containers_right2 active,.containers_right3 active,.containers_right4 active,.containers_right5 active,.containers_right6 active{
+	
+} */
+.containers_left  ul{
+	background-color:rgba(193,195,197,.8);
+}
+.containers_left > ul > li  > div {
+	    height: 100%;
+    border-bottom: 1px solid white;
+    width: 70%;
+    margin: 0 auto;
+	
+}
+.containers_left > ul > li {
+	-webkit-transition-property:background-color color ;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease;
+	font-size:16px;
+	font-family: "PingFang SC",Helvetica,"Helvetica Neue","微软雅黑",Tahoma,Arial,sans-serif;
+	line-height:66px;
+	color:white;
+	height:66px;
+	width: 100%;
+}
+.containers_left > ul > li > i{
+		color:rgba(255,255,255,.6);
+	
+}
+.containers_left span{
+float: left;
+	
+}
+.containers_left  i{
+	float: right;
+	line-height: 65px;
+}
+
+
+
+
+.right_top{
+	
+	text-align:left;
+	width: 100%;
+	height: auto;
+
+	
+}
+.right_bottom{
+	width: 100%;
+	height: auto;
+		text-align:left;
+	
+	
+	
+}
+.right_bottom ul li {
+	height: 40px;
+	width: 100%;
+	line-height: 40px;
+
+	font-size: 14px;
+}
+.right_bottom ul li a {
+		cursor:pointer;
+		color: black;
+}
+.right_bottom > span{
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+}
+.rt_title{
+	margin-bottom: 20px;
+}
+.rt_content {
+	margin-bottom: 25px;
+}
+.rt_title > span{
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+}
+.rt_content > span {
+	font-size: 16px;
+	font-family: "微软雅黑";
+	color: black;
+}
+.rt_bottom span{
+	float: left;
+	
+}
+.fy{
+position: absolute;
+    right: 80px;
+    bottom: 50px;
+}
+.pageout > a {
+	float: left;
+}
+
+
+
+

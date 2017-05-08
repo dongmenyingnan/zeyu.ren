@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css"
+	href="../dist/css/wangEditor.min.css">
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/jquery.tagsinput.css" />
+<link href=" ../bootstrap/css/sticky-footer.css" rel="stylesheet">
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	
+<title>添加文章</title>
+</head>
+<body>
+<div class="pd-20">
+	
+	
+		<div class="row cl">
+		<div class="modal-body">
+					<h5>异常标题</h5>
+					<textarea class="form-control" style="resize: none;" rows="2"
+						name="article_name" id="article_name" onKeyDown="LimitTextArea(this,50)"
+						onKeyUp="LimitTextArea(this,50)"
+						onkeypress="LimitTextArea(this,50)" placeholder="请在这里描述您的问题(50字内)"
+						required="required"></textarea>
+					<h5>异常文章作者</h5>
+					<textarea class="form-control" style="resize: none;" rows="2"
+						name="article_name" id="article_author" onKeyDown="LimitTextArea(this,50)"
+						onKeyUp="LimitTextArea(this,50)"
+						onkeypress="LimitTextArea(this,50)" placeholder="请在这里描述您的问题(50字内)"
+						required="required"></textarea>
+					<h5>异常文章内容</h5>
+					<textarea class="form-control" style="height: 280px;" rows="10"
+						name="article_content" id="article_content"
+						onKeyDown="LimitTextArea(this,200)"
+						onKeyUp="LimitTextArea(this,200)"
+						onkeypress="LimitTextArea(this,200)"
+						placeholder="请在这里描述您的问题(50字内)" required="required"></textarea>
+					<h5>异常异常类型</h5>
+					<select id="article_type">
+					<option selected="selected" value="1">前段异常</option>
+					<option  value="2">后台异常</option>
+					<option  value="3">移动端异常</option>
+					<option  value="4">数据库异常</option>
+					<option  value="5">服务器异常</option>
+					<option  value="6">测试异常</option>
+					</select>	
+					<h5>请输入标签</h5>
+					<textarea id="tags_1" class="form-control" style="resize: none;"
+						rows="1" name="article_tag" 
+						onKeyDown="LimitTextArea(this,50)"
+						onKeyUp="LimitTextArea(this,50)"
+						onkeypress="LimitTextArea(this,50)"></textarea>
+
+				</div>
+		</div>
+	
+		<div class="row cl">
+			<div class="col-9 col-offset-3">
+				<input class="btn btn-primary radius" type="button" onclick="admin_add_data()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+</div>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="js/H-ui.js"></script> 
+<script type="text/javascript" src="js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="../js/jquery.tagsinput.js"></script>
+<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
+
+<script src="../bootstrap/js/mybootstrap.js"></script>
+<script type="text/javascript">
+/*管理员增加的请求*/
+function admin_add_data(){
+	var article_name = $("#article_name").val();
+	var article_author=$("#article_author").val();	
+	var article_content=$("#article_content").val();
+	var article_type =$("#article_type").val();
+	var tags_1 = $("#tags_1").val();
+	$.ajax({
+		url : "../CMS/exception/exceptionAddRole.action",
+		type : "POST",
+		data:{
+			article_name:article_name,
+			article_author:article_author,
+			article_content:article_content,
+			article_type:article_type,
+			tags_1:tags_1
+		},
+		dataType : "text",
+		async : false,
+		success : function() {
+			parent.location.reload();
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			//收集异常数据存数据库
+			layer.closeAll('loading');
+			layer.msg('系统遇到了一点问题,请刷新重试!', {
+				icon : 5,
+				time : 3000
+			});
+		}
+	})
+}
+
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-admin-add").Validform({
+		tiptype:2,
+		callback:function(form){
+			form[0].submit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+
+var editor = new wangEditor('article_content');
+
+// 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
+// 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
+editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+	if (item === 'table') {
+		return null;
+	}
+	if (item === 'emotion') {
+		return null;
+	}
+	if (item === '|') {
+		return null;
+	}
+	if (item === 'img') {
+		return null;
+	}
+	if (item === 'video') {
+		return null;
+	}
+	if (item === 'location') {
+		return null;
+	}
+	return item;
+});
+
+editor.create();
+
+function aoTuList(str) {
+
+	$.ajax({
+		url : "./test/test.action",
+		type : "GET",
+		data : "str=" + str,
+		dataType : "text",
+		async : false,
+		success : function(result) {
+			//alert("请求成功");
+			initData(result);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			//收集异常数据存数据库
+			alert(XMLHttpRequest);
+			alert(textStatus);
+			alert(errorThrown);
+		}
+	})
+}
+var availableTags;
+function initData(result) {
+	var availableTags = eval(result);
+	$("#search").autocomplete({
+		source : availableTags
+	});
+}
+	$(function() {
+	$('#tags_1').tagsInput({
+		width : 'auto'
+	});
+/* 	aoTuList("a");
+
+		
+		var str = $("#search").value;
+		if (!$.trim(str).length <= 0)
+			aoTuList(str); */
+	
+}); 
+function LimitTextArea(field, maxLen) {
+	maxlimit = maxLen;
+	if (field.value.length > maxlimit)
+		field.value = field.value.substring(0, maxlimit);
+}
+function openModel() {
+	$('#myModal').modal('show');
+}
+function refresh() {
+	location.reload(true);
+}
+
+
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
 /*---------------------页面基础定义----------------------------------*/
 
 body {
-    font-size: 14px;
+    font-size: 12px;
     color: #000000 !important;
     padding: 0;
     margin: 0px;
@@ -18,7 +18,6 @@ body {
 p {
     text-align: justify;
 }
-
 
 /*---------------------链接定义----------------------------------*/
 
@@ -123,7 +122,8 @@ a:active {
 div#top {
     background-color: #f1f1f1;
     height: 90px;
-        padding: 0 15px 0 265px;
+        width: 70%;
+    margin: 0 auto;
 }
 
 div#topleft {
@@ -199,26 +199,22 @@ div#topright {
     float: right;
     height: 70px;
     width: auto;
-    margin: 0 40px 0 0;
 }
 
 
 /*center part*/
 
 div#center {
-        padding: 20px 30px 40px 265px;
     background-color: #fff;
     height: auto;
+        padding-top: 20px;
 }
 
 #leftpart {
-    width: 800px;
-    display: inline-block;
+    width: 70%;
+    margin: 0px auto;
 }
 
-#qbody {
-    padding: 0 0 20px 40px;
-}
 
 .box {
     padding: 10px 40px;
@@ -244,7 +240,7 @@ img.headicon {
 /*answerPart*/
 
 #answerPart {
-    padding: 20px 0 0 40px;
+    padding: 30px 0 0 0;
 }
 
 textarea {
@@ -261,7 +257,7 @@ textarea {
     color: #fff;
     background-color: #606060;
     float: right;
-    margin: 6px 40px 0 0;
+    margin: 6px 0 0 0;
 }
 
 #answerBtn:hover {
@@ -281,4 +277,29 @@ textarea {
 .footer iframe {
     width: 100%;
     height: 60px;
+}
+#qbody_date{
+width:800px;
+background:#fafafa;
+
+}
+.auther{
+	font-size: 14px;
+	color: white;
+	width: 20px;
+	height: 20px;
+	text-align:center;
+	background: #EEB422;
+	border-radius:5px;
+	padding: 3px;
+}
+.date{
+	text-align: right !important;
+	width: 100%;
+	line-height:50px;
+	height: 50px;
+	font-size: 12px;
+	font-family: "微软雅黑";
+	font-weight: bolder;
+	text-align: center;
 }

@@ -84,28 +84,46 @@
 						</form>
 						<!-- 导航 -->
 						<div class="collapse navbar-collapse" id="lg-navbar-collapse">
+							
+								<%-- 	<c:when test="${uploadfage!=null}">
+										<li><a
+									href="${pageContext.request.contextPath}/user/uploadTest.action"><span
+										class="glyphicon glyphicon-open"></span>题库管理</a></li>
+										</c:when> --%>
+						
 							<ul class="nav navbar-nav navbar-left">
 								<li><c:choose>
 										<c:when test="${user!=null}">
 											<a href="javascript:openModel();">
 										</c:when>
 										<c:otherwise>
-											<a href="${pageContext.request.contextPath }/user/account.jsp">
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
 										</c:otherwise>
-									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提问</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/feedback.jsp"><span
 										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
 										
-									<c:choose>
-									<c:when test="${uploadfage!=null}">
-										<li><a
-									href="${pageContext.request.contextPath}/user/uploadTest.action"><span
-										class="glyphicon glyphicon-open"></span>题库管理</a></li>
-										</c:when>
-										
-									</c:choose>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 

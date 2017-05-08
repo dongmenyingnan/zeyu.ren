@@ -17,4 +17,6 @@ public interface UserService {
 	public List<User> findByUser(String user_name);
 	public User findByTele(String user_tele);
 	public User findByEmail(String user_email);
+	public User findByUserToken(String user_token);
+	public User admincheck(String name ,String password);
 }

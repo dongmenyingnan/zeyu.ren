@@ -31,6 +31,9 @@ public class AnswerAction extends BaseAction{
 	@RequestMapping(value = "/answers.action")
 	public String answers(Model model, Integer question_id,HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:./user/account.jsp";
+		} else{
 		if(question_id==null){
 			question_id=questionService.getQuestionCount()+1;
 		}
@@ -47,9 +50,17 @@ public class AnswerAction extends BaseAction{
 		
 		AnswerVo answerVo = new AnswerVo();
 		answerVo = answerService.getAnswerVo(question_id);
-		answerVo.setQuestion_time(questionService.question_time(question_id));
+		String timer =questionService.question_time(question_id);
+		System.out.println(timer);
+		if("0分钟前".equals(timer)){
+			answerVo.setQuestion_time("刚刚");
+		}else{
+			answerVo.setQuestion_time(timer);
+		}
+		
 		model.addAttribute("answerVo", answerVo);
 		return "answers";
+		}
 	}
 
 	@RequestMapping(value = "/reply.action")

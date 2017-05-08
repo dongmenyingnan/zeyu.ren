@@ -14,12 +14,7 @@ import com.zeyu.controller.BaseAction;
 import com.zeyu.entity.User;
 import com.zeyu.service.UserService;
 
-/**
- * 用户管理
- * 
- * @author lisheng
- *
- */
+
 @Controller
 @RequestMapping("/CMS")
 public class CMSUserAction extends BaseAction {
@@ -31,7 +26,7 @@ public class CMSUserAction extends BaseAction {
 	// 展示普通用户列表
 	@RequestMapping(value = "/adminShowList.action", method = RequestMethod.GET)
 	public void adminShowList(String json, HttpServletResponse response) {
-		String result = JSON.toJSONString(userService.findByKind(0));
+		String result = JSON.toJSONString(userService.findByKind(1));
 		out(response, result);
 	}
 
@@ -54,7 +49,7 @@ public class CMSUserAction extends BaseAction {
 	// 管理员删除角色
 	@RequestMapping(value = "/adminDeleteRole.action", method = RequestMethod.POST)
 	public void adminDeleteRole(HttpServletResponse response, String id) {
-		String result = userService.delete(id) + "";
+		String result = userService.delete(id) +"";
 		out(response, result);
 	}
 	// 管理员批量删除角色
@@ -68,6 +63,7 @@ public class CMSUserAction extends BaseAction {
 	@RequestMapping(value = "/adminAddRole.action", method = RequestMethod.POST)
 	public void adminAddRole(Model model, HttpServletResponse response, String user_name, String user_pass,String user_tele, String user_email
 			, String user_kind) {
+		System.out.println(user_name);
 		User user = new User();
 		user.setUser_email(user_email);
 		user.setUser_kind(Integer.parseInt(user_kind));
@@ -75,4 +71,7 @@ public class CMSUserAction extends BaseAction {
 		user.setUser_pass(user_pass);
 		userService.add(user);
 	}
+
+	
+	
 }

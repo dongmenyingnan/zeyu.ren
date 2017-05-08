@@ -92,11 +92,30 @@
 											<a
 												href="${pageContext.request.contextPath }/user/account.jsp">
 										</c:otherwise>
-									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提问</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/feedback.jsp"><span
 										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
+										
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 

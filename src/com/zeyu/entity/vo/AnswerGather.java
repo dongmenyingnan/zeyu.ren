@@ -6,7 +6,7 @@ public class AnswerGather {
 	private Answer answer;
 	private String username;
 	private String usertype;
-	private Date answer_time;
+	private String answer_time;
 	public String getUsername() {
 		return username;
 	}
@@ -22,11 +22,11 @@ public class AnswerGather {
 	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
-	public Date getAnswer_time() {
+	public String getAnswer_time() {
 		return answer_time;
 	}
 
-	public void setAnswer_time(Date answer_time) {
+	public void setAnswer_time(String answer_time) {
 		this.answer_time = answer_time;
 	}
 

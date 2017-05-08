@@ -19,6 +19,12 @@ public interface IBaseDao<T>{
 	public List<T> findBankConditionByPage(int page,String condition);
 	public List<T> findFilterConditionByPage(int page,String condition);
 	public List<T> findBySearch(String str);
+	public List<T> findByIntSearch(int flag,int page);
+	public List<T> findByIntSearchExcep(int flag,int page);
+	public T  findByIntSearch1(int flag);
+	public T  findByIntSearch2(int flag);
+	public List<T> findByIntSearchException(int flag);
+	public T  findByIntSearch1Exception(int flag);
 	public List<T> findBySearch1(String str);
 	public List excuteQuery(String sql);
 	public int updateSQL(String sql);

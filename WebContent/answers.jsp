@@ -88,13 +88,31 @@
 											<a
 												href="${pageContext.request.contextPath }/user/account.jsp">
 										</c:otherwise>
-									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提问</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/feedback.jsp"><span
 										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
+										
+							</ul>							<ul class="nav navbar-nav navbar-right">
 
 								<c:choose>
 									<c:when test="${user!=null}">
@@ -203,7 +221,7 @@
 			<div id="leftpart">
 				<div id="qbody">
 					<p>${answerVo.question.comment_addition}</p>
-					<br> <span class="mr-10">${answerVo.question_time }提问</span>
+					<br> <%-- <span class="mr-10">${answerVo.question_time }提问</span> --%>
 				</div>
 				<div id="abody">
 					<h4>
@@ -220,7 +238,7 @@
 							</div>
 							<div class="mt-10">
 								<p>${list.answer.answer_content}</p>
-								<br> <span class="mr-10">${list.answer_time}回答</span> <a
+								<br>  <span class="mr-10">${list.answer_time}回答</span>  <a
 									href="javascript:addVotes(${list.answer.answer_id });"> <img
 									class="headicon mr-10" src="image/good.jpg" />
 								</a>
@@ -229,7 +247,7 @@
 					</c:forEach>
 					<!-- 分割线-->
 
-					<div style="width: 800px; border-top: solid 1px #aaa"></div>
+					<div style="width: 100%; border-top: solid 1px #aaa"></div>
 				</div>
 				<div id="answerPart">
 					<h4>撰写答案</h4>

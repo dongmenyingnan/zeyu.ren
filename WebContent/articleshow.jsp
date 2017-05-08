@@ -81,7 +81,7 @@
 						</form>
 						<!-- 导航 -->
 						<div class="collapse navbar-collapse" id="lg-navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
+					<ul class="nav navbar-nav navbar-left">
 								<li><c:choose>
 										<c:when test="${user!=null}">
 											<a href="javascript:openModel();">
@@ -90,12 +90,32 @@
 											<a
 												href="${pageContext.request.contextPath }/user/account.jsp">
 										</c:otherwise>
-									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>提问</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+									</c:choose> <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>提问</a></li>
+									
+									
+									<li><c:choose>
+										<c:when test="${user!=null}">
+											<a href="${pageContext.request.contextPath }/write.jsp"">
+										</c:when>
+										<c:otherwise>
+											<a
+												href="${pageContext.request.contextPath }/user/account.jsp">
+										</c:otherwise>
+									</c:choose> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>写文章</a></li>
+									
+									<li><a
+									href="${pageContext.request.contextPath}/allArticles.action"><span
+										class="glyphicon glyphicon-book"></span>文章列表</a></li>
+								<li><a href="${pageContext.request.contextPath}/display.action"><span class="glyphicon glyphicon-flash"></span>快速手册</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/exception.action"><span
+										class="glyphicon glyphicon-info-sign"></span>常见异常</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/feedback.jsp"><span
 										class="glyphicon glyphicon-wrench"></span>用户反馈</a></li>
+										
 							</ul>
+					
 							<ul class="nav navbar-nav navbar-right">
 
 								<c:choose>
@@ -181,7 +201,7 @@
 				<div style="margin-top: 10px;">
 					<a class="black fs-16 ml-40" href="#">${articleVo.user_name}</a> <span
 						class="fs-14" style="margin-left: 20px;">${articleVo.article_time }
-						提问</span>
+						发表</span>
 				</div>
 			</div>
 			<div id="topright">
@@ -210,7 +230,7 @@
 					</p>
 					 </div>
 					
-					<br> <span class="mr-10">${articleVo.article_time }发表</span>
+					<br><%--  <span class="mr-10">${articleVo.article_time }发表</span> --%>
 				</div>
 				<div id="abody">
 					<h4>
@@ -227,7 +247,7 @@
 							</div>
 							<div class="mt-10">
 								<p>${list.articleshow.articleshow_content}</p>
-								<br> <span class="mr-10">${list.article_time}评论</span> <a
+								<br> <span class="mr-10">${list.article_time}评论</span>  <a
 									href="javascript:addArticleVotes(${list.articleshow.articleshow_id });"> <img
 									class="headicon mr-10" src="image/good.jpg" />
 								</a>
@@ -236,7 +256,7 @@
 					</c:forEach>
 					<!-- 分割线-->
 
-					<div style="width: 800px; border-top: solid 1px #aaa"></div>
+					<div style="width: 100%; border-top: solid 1px #aaa"></div>
 				</div>
 				<div id="answerPart">
 					<h4>撰写评论</h4>
